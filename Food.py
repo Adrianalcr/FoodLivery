@@ -61,7 +61,7 @@ class Food:
         sf.home = Button(sf.loginf1,text="Home",command=lambda:sf.main(),cursor='hand2',bd=2,font=("coooper black", 16,'bold'),fg="white",bg="blue")
         sf.home.place(x=800,y=100) 
 
-        sf.adm = Button(sf.loginf1,text="Administração",cursor='hand2',bd=2,font=("coooper black", 16,'bold'),fg="black",bg="white")
+        sf.adm = Button(sf.loginf1,text="Administração",command=lambda:sf.Adminlog(),cursor='hand2',bd=2,font=("coooper black", 16,'bold'),fg="black",bg="white")
         sf.adm.place(x=925,y=100) 
 
         sf.about = Button(sf.loginf1,text="Sobre Nós",cursor='hand2',bd=2,font=("coooper black", 16,'bold'),fg="black",bg="white")
@@ -82,9 +82,9 @@ class Food:
         sf.c.create_image(683,309,image=sf.bkground)
 
         #Formulário Login
-        sf.c.create_rectangle(50,100,700,450,fill="#d3ede6",outline="white",width=5)
-        sf.log=Label(sf.loginf2,text="Administração: Login",fg="white",bg="#0b1335",width=31,font=("cooper black",26))
-        sf.log.place(x=59,y=105) 
+        sf.c.create_rectangle(50,100,700,450,fill="#d3ede6",outline="white",width=6)
+        sf.log=Label(sf.loginf2,text="Administração: Login",fg="white",bg="#0b1335",width=32,font=("cooper black",26))
+        sf.log.place(x=50,y=105) 
 
         sf.lab1=Label(sf.loginf2,text="Usuário :",bg="#d3ede6",font=("cooper black",22))
         sf.lab1.place(x=100,y=180)        
@@ -93,14 +93,21 @@ class Food:
 
         sf.lab2=Label(sf.loginf2,text="Senha :",bg="#d3ede6",font=("cooper black",22))
         sf.lab2.place(x=105,y=250) 
-        sf.pasd=Entry(sf.loginf2,bg="white",font=("cooper black",22),bd=1,justify='left')
-        sf.pasd.place(x=320,y=250) 
+        sf.passd=Entry(sf.loginf2,bg="white",font=("cooper black",22),bd=1,justify='left')
+        sf.passd.place(x=320,y=250) 
 
         sf.lg = Button(sf.loginf2,text="ENTRAR",fg="white",bg="black",cursor='hand2',font=("coooper black", 20),bd=1)
-        sf.lg.place(x=310,y=320) 
+        sf.lg.place(x=320,y=320)    
+
+        def clear(sf):
+            sf.user.delete(0,END)
+            sf.passd.delete(0,END)   
+
+        sf.clean1 = Button(sf.loginf2,text="LIMPAR",command=lambda:clear(sf),fg="white",bg="black",cursor='hand2',font=("coooper black", 20),bd=1)
+        sf.clean1.place(x=100,y=320) 
 
         sf.reg = Button(sf.loginf2,text="REGISTRAR",command=lambda:sf.Form(),fg="white",bg="black",cursor='hand2',font=("coooper black", 20),bd=1)
-        sf.reg.place(x=450,y=320)  
+        sf.reg.place(x=480,y=320)   
 
         sf.loginf2.pack(fill=BOTH,expand=1)   
         sf.scr.mainloop() 
@@ -115,6 +122,79 @@ class Food:
         sf.la=Label(sf.scr1,font=("cooper black",20),bg="light pink",text="\n Pizzaria FoodLivery \n Seja Bem-vindo\n\n Telefone de Contato\n (00)0000-0000\n\n Ligue para fazer seu pedido.\n\n Abrimos de segunda à sexta\n 9:00 AM as 22:00 PM.\n\n Sábado e Domingo \n 10:00 AM as 3:00 AM.\n\n by: Adriana Lima")
         sf.la.pack() 
         sf.scr1.mainloop()
+
+
+    #Área de Cadastro
+    def Adminlog(sf):
+        sf.scr.destroy()
+        sf.scr=Tk()
+
+        #Ícone
+        sf.scr.geometry("1366x768")
+        sf.scr.title("Pizzaria FoodLivery :")
+        sf.scr.iconbitmap('p.ico')
+
+        #Logo
+        sf.adminf1 = Frame(sf.scr,height=150,width=1366)
+        sf.logo = PhotoImage(file="logo.png")
+        sf.log = Label(sf.adminf1,image=sf.logo, height=150).place(x=0,y=0)  
+
+        #Botões 
+        sf.home = Button(sf.adminf1,text="Retornar Para Home",command=lambda:sf.main(),cursor='hand2',bd=2,font=("coooper black", 16,'bold'),fg="white",bg="blue")
+        sf.home.place(x=1000,y=90)         
+
+        #Data e Hora
+        sf.localtime  = time.asctime(time.localtime(time.time()))
+        sf.tim=Label(sf.adminf1,text=sf.localtime,fg="white",font=("default",16),bg="#0b1335")
+        sf.tim.place(x=1000,y=50) 
+        sf.adminf1.pack(fill=BOTH,expand=1) 
+
+
+        sf.adminf2 = Frame(sf.scr,height=618,width=1366)
+        sf.c = Canvas(sf.adminf2, height=618,width=1366)        
+        sf.c.pack()
+
+       
+        #Background Fundo
+        sf.logo2 = PhotoImage(file="pizza3.png")        
+        sf.c.create_image(683,309,image=sf.logo2)
+
+        #Fomrulário Registro
+        sf.c.create_rectangle(350,100,1016,450,fill="#d3ede6",outline="white",width=6)
+        sf.log=Label(sf.adminf2,text="Formulário Login Administrador:",fg="white",bg="#0b1335",width=33,font=("cooper black",26))
+        sf.log.place(x=350,y=105) 
+
+        sf.lab1=Label(sf.adminf2,text="Usuário :",bg="#d3ede6",font=("cooper black",18))
+        sf.lab1.place(x=400,y=200)  
+
+        sf.userad=Entry(sf.adminf2,bg="white",width=15,font=("cooper black",18),bd=1)
+        sf.userad.place(x=550,y=200)     
+
+        sf.lab2=Label(sf.adminf2,text="Senha :",bg="#d3ede6",font=("cooper black",18))
+        sf.lab2.place(x=400,y=280) 
+
+        sf.passwd=Entry(sf.adminf2,bg="white",width=15,font=("cooper black",18),bd=1)
+        sf.passwd.place(x=550,y=280) 
+
+       
+
+        #Botões 
+        sf.lga = Button(sf.adminf2,text="LOGIN",fg="white",bg="black",cursor='hand2',font=("coooper black", 20),bd=1)
+        sf.lga.place(x=630,y=350)
+
+        sf.lvt = Button(sf.adminf2,text="VOLTAR",command=lambda:sf.Login(),fg="white",bg="black",cursor='hand2',font=("coooper black", 20),bd=1)
+        sf.lvt.place(x=400,y=350)
+
+        def clear(sf):
+            sf.userad.delete(0,END)
+            sf.passwd.delete(0,END)
+
+        sf.clean2 = Button(sf.adminf2,text="LIMPAR",command=lambda:clear(sf),fg="white",bg="black",cursor='hand2',font=("coooper black", 20),bd=1)
+        sf.clean2.place(x=850,y=350)              
+        
+        sf.adminf2.pack(fill=BOTH,expand=1)   
+        sf.scr.mainloop()
+
 
     #Área de Cadastro
     def Form(sf):
@@ -135,7 +215,7 @@ class Food:
         sf.home = Button(sf.form,text="Home",command=lambda:sf.main(),cursor='hand2',bd=2,font=("coooper black", 16,'bold'),fg="white",bg="blue")
         sf.home.place(x=800,y=100) 
 
-        sf.adm = Button(sf.form,text="Administração",cursor='hand2',bd=2,font=("coooper black", 16,'bold'),fg="black",bg="white")
+        sf.adm = Button(sf.form,text="Administração",command=lambda:sf.Adminlog(),cursor='hand2',bd=2,font=("coooper black", 16,'bold'),fg="black",bg="white")
         sf.adm.place(x=950,y=100) 
 
         sf.about = Button(sf.form,text="Sobre Nós",cursor='hand2',bd=2,font=("coooper black", 16,'bold'),fg="black",bg="white")
@@ -167,7 +247,7 @@ class Food:
         sf.name=Entry(sf.form2,bg="white",width=15,font=("cooper black",18),bd=1)
         sf.name.place(x=430,y=200)     
 
-        sf.lab2=Label(sf.form2,text="Sobrenome :",bg="#d3ede6",font=("cooper black",18))
+        sf.lab2=Label(sf.form2,text="Sobre nome :",bg="#d3ede6",font=("cooper black",18))
         sf.lab2.place(x=730,y=200) 
         sf.sobrenome=Entry(sf.form2,bg="white",width=15,font=("cooper black",18),bd=1)
         sf.sobrenome.place(x=920,y=200) 
@@ -200,8 +280,16 @@ class Food:
         sf.lg = Button(sf.form2,text="CADASTRAR",fg="white",bg="black",cursor='hand2',font=("coooper black", 20),bd=1)
         sf.lg.place(x=610,y=370)
 
-        sf.clear = Button(sf.form2,text="LIMPAR",fg="white",bg="black",cursor='hand2',font=("coooper black", 20),bd=1)
-        sf.clear.place(x=910,y=370)              
+        def clear(sf):
+            sf.usern.delete(0,END)
+            sf.passwd.delete(0,END)
+            sf.email.delete(0,END)
+            sf.tel.delete(0,END)
+            sf.name.delete(0,END)
+            sf.sobrenome.delete(0,END)
+
+        sf.clean3 = Button(sf.form2,text="LIMPAR",command=lambda:clear(sf),fg="white",bg="black",cursor='hand2',font=("coooper black", 20),bd=1)
+        sf.clean3.place(x=910,y=370)              
         
         sf.form2.pack(fill=BOTH,expand=1)   
         sf.scr.mainloop()
