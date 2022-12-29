@@ -2,7 +2,7 @@
 
     "rewrites": [
 
-        { "source": "/(.*)", "destination": "/source/Food" }
+        { "source": "/(.*)", "destination": "Food" }
 
     ]
 
