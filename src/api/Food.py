@@ -20,7 +20,7 @@ class Food:
         # Ícone do Sistema
         sf.scr.geometry("1366x768")
         sf.scr.title("Pizzaria FoodLivery :")
-        sf.scr.iconbitmap('p.ico')
+        sf.scr.wm_iconbitmap('p.ico')
 
         # Logo
         sf.mainf1 = Frame(sf.scr,height=150,width=1366)
