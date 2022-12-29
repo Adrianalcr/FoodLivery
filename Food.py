@@ -3,6 +3,8 @@ from cgitb import text
 from tkinter import*
 import time
 import random
+from cgitb import text
+from tkinter import PhotoImage
 from tkinter import messagebox
 from turtle import bgcolor, color
 
@@ -20,7 +22,7 @@ class Food:
         # Ícone do Sistema
         sf.scr.geometry("1366x768")
         sf.scr.title("Pizzaria FoodLivery :")
-        sf.scr.wm_iconbitmap('p.ico')
+        sf.scr.iconbitmap('p.ico')
 
         # Logo
         sf.mainf1 = Frame(sf.scr,height=150,width=1366)
