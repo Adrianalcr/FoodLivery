@@ -249,7 +249,7 @@ class Food:
         sf.name=Entry(sf.form2,bg="white",width=15,font=("cooper black",18),bd=1)
         sf.name.place(x=430,y=200)     
 
-        sf.lab2=Label(sf.form2,text="Sobre nome :",bg="#d3ede6",font=("cooper black",18))
+        sf.lab2=Label(sf.form2,text="Sobrenome :",bg="#d3ede6",font=("cooper black",18))
         sf.lab2.place(x=730,y=200) 
         sf.sobrenome=Entry(sf.form2,bg="white",width=15,font=("cooper black",18),bd=1)
         sf.sobrenome.place(x=920,y=200) 
